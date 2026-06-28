@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact links and resume download for Matthew Petschauer's professional CS499 ePortfolio.">
+    <title>Contact | Matthew Petschauer</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <!-- Skip link improves keyboard navigation and accessibility. -->
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <!-- Shared site header and responsive navigation. -->
+    <header class="site-header">
+        <nav class="navbar container" aria-label="Primary navigation">
+            <a class="brand" href="../index.html" aria-label="Matthew Petschauer home">
+                <span class="brand-mark" aria-hidden="true">MP</span>
+                <span>Matthew Petschauer</span>
+            </a>
+
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-menu">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="nav-toggle-line"></span>
+                <span class="nav-toggle-line"></span>
+                <span class="nav-toggle-line"></span>
+            </button>
+
+            <ul class="nav-menu" id="primary-menu">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="self-assessment.html">Self-Assessment</a></li>
+                <li><a href="code-review.html">Code Review</a></li>
+                <li><a href="artifacts.html">Artifacts</a></li>
+                <li><a href="contact.html" aria-current="page">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <!-- Page hero introduces professional contact options. -->
+        <section class="page-hero section">
+            <div class="container narrow">
+                <p class="eyebrow">Contact</p>
+                <h1>Professional Links</h1>
+                <p>
+                    [Contact introduction placeholder: invite employers, reviewers, and collaborators to connect with
+                    you through the links below.]
+                </p>
+            </div>
+        </section>
+
+        <!-- Contact cards make each professional channel easy to scan. -->
+        <section class="section">
+            <div class="container contact-grid">
+                <article class="card contact-card">
+                    <h2>GitHub</h2>
+                    <p>[GitHub profile URL placeholder]</p>
+                    <a class="button button-secondary" href="#">View GitHub</a>
+                </article>
+
+                <article class="card contact-card">
+                    <h2>LinkedIn</h2>
+                    <p>[LinkedIn profile URL placeholder]</p>
+                    <a class="button button-secondary" href="#">View LinkedIn</a>
+                </article>
+
+                <article class="card contact-card">
+                    <h2>Email</h2>
+                    <p>[Professional email address placeholder]</p>
+                    <a class="button button-secondary" href="#">Send Email</a>
+                </article>
+            </div>
+        </section>
+
+        <!-- Resume call-to-action points to a future PDF in the documents folder. -->
+        <section class="section section-cta">
+            <div class="container cta-panel">
+                <div>
+                    <p class="eyebrow">Resume</p>
+                    <h2>Download a current resume.</h2>
+                    <p>[Resume note placeholder: add a short statement once the resume PDF is available.]</p>
+                </div>
+                <button class="button button-primary button-disabled" type="button" disabled>Resume Download</button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Shared site footer. -->
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <p>&copy; <span id="current-year"></span> Matthew Petschauer. CS499 Computer Science Capstone ePortfolio.</p>
+            <div class="footer-links" aria-label="Footer navigation">
+                <a href="self-assessment.html">Self-Assessment</a>
+                <a href="code-review.html">Code Review</a>
+                <a href="artifacts.html">Artifacts</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>

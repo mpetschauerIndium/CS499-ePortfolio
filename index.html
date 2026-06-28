@@ -3,31 +3,182 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Matthew Petschauer's Southern New Hampshire University CS499 Computer Science Capstone ePortfolio.">
     <title>Matthew Petschauer | Computer Science ePortfolio</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Skip link improves keyboard navigation and accessibility. -->
+    <a class="skip-link" href="#main-content">Skip to main content</a>
 
-<h1>Matthew Petschauer</h1>
+    <!-- Site header with sticky responsive navigation. -->
+    <header class="site-header">
+        <nav class="navbar container" aria-label="Primary navigation">
+            <a class="brand" href="index.html" aria-label="Matthew Petschauer home">
+                <span class="brand-mark" aria-hidden="true">MP</span>
+                <span>Matthew Petschauer</span>
+            </a>
 
-<h2>Computer Science ePortfolio</h2>
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-menu">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="nav-toggle-line"></span>
+                <span class="nav-toggle-line"></span>
+                <span class="nav-toggle-line"></span>
+            </button>
 
-<p>
-Welcome to my professional ePortfolio for Southern New Hampshire University's
-Bachelor of Science in Computer Science program.
-</p>
+            <ul class="nav-menu" id="primary-menu">
+                <li><a href="index.html" aria-current="page">Home</a></li>
+                <li><a href="pages/self-assessment.html">Self-Assessment</a></li>
+                <li><a href="pages/code-review.html">Code Review</a></li>
+                <li><a href="pages/artifacts.html">Artifacts</a></li>
+                <li><a href="pages/contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-<hr>
+    <main id="main-content">
+        <!-- Hero section introduces the portfolio owner before the capstone artifact. -->
+        <section class="hero section">
+            <div class="hero-grid container">
+                <div class="hero-copy">
+                    <p class="eyebrow">Southern New Hampshire University CS499 Capstone Portfolio</p>
+                    <h1>Matthew Petschauer</h1>
+                    <p class="hero-title">Computer Science Graduate | Software Developer</p>
+                    <p class="hero-summary">
+                        [Professional summary placeholder: introduce your background, software development interests,
+                        strengths, and the type of engineering role you are pursuing.]
+                    </p>
+                    <div class="button-row" aria-label="Primary portfolio actions">
+                        <a class="button button-primary" href="pages/self-assessment.html">Professional Self-Assessment</a>
+                        <a class="button button-secondary" href="pages/artifacts.html">View Artifact</a>
+                        <a class="button button-ghost" href="#">GitHub</a>
+                    </div>
+                </div>
 
-<h3>Contents</h3>
+                <!-- Replace this placeholder with a professional headshot in assets/images. -->
+                <div class="headshot-card" aria-label="Professional headshot placeholder">
+                    <div class="headshot-placeholder">
+                        <span>Professional Headshot Placeholder</span>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-<ul>
-    <li>Professional Self-Assessment</li>
-    <li>Code Review</li>
-    <li>Original Artifact</li>
-    <li>Software Design & Engineering Enhancement</li>
-    <li>Algorithms & Data Structures Enhancement</li>
-    <li>Database Enhancement</li>
-</ul>
+        <!-- Professional introduction explains the portfolio's career-focused purpose. -->
+        <section class="section">
+            <div class="container split-layout">
+                <div>
+                    <p class="eyebrow">Professional Introduction</p>
+                    <h2>Computer Science Portfolio</h2>
+                </div>
+                <div class="section-copy">
+                    <p>
+                        [Professional introduction placeholder: describe who you are as a computer science graduate,
+                        what you value as a software developer, and how this portfolio represents your growth through
+                        the CS499 capstone experience.]
+                    </p>
+                    <p>
+                        [Additional placeholder: connect your academic work, practical development experience,
+                        communication skills, and career goals for employers reviewing this portfolio.]
+                    </p>
+                </div>
+            </div>
+        </section>
 
+        <!-- Skills section presents employer-relevant technical and professional strengths. -->
+        <section class="section section-muted">
+            <div class="container">
+                <div class="section-heading">
+                    <p class="eyebrow">Skills</p>
+                    <h2>Technical Focus Areas</h2>
+                    <p>[Skills overview placeholder: summarize the capabilities demonstrated across the portfolio.]</p>
+                </div>
+
+                <div class="skill-grid">
+                    <article class="card">
+                        <h3>Software Design & Engineering</h3>
+                        <p>[Placeholder for architecture, maintainability, testing, and implementation skills.]</p>
+                    </article>
+                    <article class="card">
+                        <h3>Algorithms & Data Structures</h3>
+                        <p>[Placeholder for problem solving, performance analysis, and data structure selection.]</p>
+                    </article>
+                    <article class="card">
+                        <h3>Databases</h3>
+                        <p>[Placeholder for data modeling, query design, persistence, and database integration.]</p>
+                    </article>
+                    <article class="card">
+                        <h3>Security</h3>
+                        <p>[Placeholder for secure coding practices, risk awareness, and defensive design.]</p>
+                    </article>
+                    <article class="card">
+                        <h3>Communication</h3>
+                        <p>[Placeholder for documentation, technical writing, code review, and presentation skills.]</p>
+                    </article>
+                    <article class="card">
+                        <h3>Collaboration</h3>
+                        <p>[Placeholder for teamwork, feedback, planning, and professional development practices.]</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured artifact section keeps the capstone project visible without making it the entire portfolio. -->
+        <section class="section">
+            <div class="container feature-panel">
+                <div class="feature-content">
+                    <p class="eyebrow">Featured Capstone Artifact</p>
+                    <h2>[Capstone Artifact Title Placeholder]</h2>
+                    <p>
+                        [Featured artifact summary placeholder: briefly describe the original artifact, why it was
+                        selected, and how the enhancements demonstrate growth in software engineering, algorithms,
+                        and databases.]
+                    </p>
+                    <div class="tag-list" aria-label="Artifact technology placeholders">
+                        <span>[Technology]</span>
+                        <span>[Technology]</span>
+                        <span>[Technology]</span>
+                    </div>
+                    <div class="button-row">
+                        <a class="button button-primary" href="pages/artifacts.html">View Artifact Details</a>
+                        <a class="button button-secondary" href="pages/code-review.html">Watch Code Review</a>
+                    </div>
+                </div>
+
+                <!-- Replace this block with a real artifact screenshot from assets/screenshots. -->
+                <div class="screenshot-placeholder" role="img" aria-label="Featured artifact screenshot placeholder">
+                    <span>Featured Artifact Screenshot Placeholder</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call-to-action section directs reviewers to the strongest portfolio materials. -->
+        <section class="section section-cta">
+            <div class="container cta-panel">
+                <div>
+                    <p class="eyebrow">Explore the Portfolio</p>
+                    <h2>Review my capstone growth and professional materials.</h2>
+                </div>
+                <div class="button-row">
+                    <a class="button button-primary" href="pages/self-assessment.html">Read Self-Assessment</a>
+                    <a class="button button-secondary" href="pages/contact.html">Contact</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer repeats key navigation for convenience. -->
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <p>&copy; <span id="current-year"></span> Matthew Petschauer. CS499 Computer Science Capstone ePortfolio.</p>
+            <div class="footer-links" aria-label="Footer navigation">
+                <a href="pages/self-assessment.html">Self-Assessment</a>
+                <a href="pages/artifacts.html">Artifacts</a>
+                <a href="pages/contact.html">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
