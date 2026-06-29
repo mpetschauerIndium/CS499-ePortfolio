@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Database enhancement narrative for Matthew Petschauer's SNHU CS499 ePortfolio.">
+    <title>Database Enhancement Narrative | Matthew Petschauer</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <!-- Skip link improves keyboard navigation and accessibility. -->
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <!-- Shared site header and responsive navigation. -->
+    <header class="site-header">
+        <nav class="navbar container" aria-label="Primary navigation">
+            <a class="brand" href="../index.html" aria-label="Matthew Petschauer home">
+                <span class="brand-mark" aria-hidden="true">MP</span>
+                <span>Matthew Petschauer</span>
+            </a>
+
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-menu">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="nav-toggle-line"></span>
+                <span class="nav-toggle-line"></span>
+                <span class="nav-toggle-line"></span>
+            </button>
+
+            <ul class="nav-menu" id="primary-menu">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="self-assessment.html">Self-Assessment</a></li>
+                <li><a href="code-review.html">Code Review</a></li>
+                <li><a href="artifacts.html">Artifacts</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <!-- Page hero introduces the enhancement narrative. -->
+        <section class="page-hero section">
+            <div class="container narrow">
+                <p class="eyebrow">Enhancement Three</p>
+                <h1>Database Enhancement Narrative</h1>
+                <p>
+                    This narrative explains the MongoDB and Mongoose improvements made to strengthen persistence, validation, indexing, and data integrity.
+                </p>
+            </div>
+        </section>
+
+        <!-- Narrative content uses the existing reflection block styling. -->
+        <section class="section">
+            <div class="container content-stack">
+                <article class="reflection-block">
+                    <h2>Artifact Overview</h2>
+                    <p>The TRAVLR artifact stores trip inventory and administrative user records in MongoDB through Mongoose models. The database enhancement focused on making this persistence layer more reliable, secure, and maintainable.</p>
+                </article>
+
+                <article class="reflection-block">
+                    <h2>Why the Artifact Was Selected</h2>
+                    <p>The application depends on accurate trip and user data, so the database layer was a strong place to demonstrate CS499 outcomes. Improving schemas, indexes, connection behavior, validation, and query safety directly improves the reliability of the full application.</p>
+                </article>
+
+                <article class="reflection-block">
+                    <h2>Enhancement Goals</h2>
+                    <p>The goals were to define stricter Mongoose schemas, prevent unsupported fields from being persisted, add indexes for common lookup and sorting patterns, protect password material, control database connection behavior through configuration, and improve CRUD operations with validation-backed updates.</p>
+                </article>
+
+                <article class="reflection-block">
+                    <h2>Analysis of the Original Artifact</h2>
+                    <p>The original artifact used MongoDB for trip data, but it needed stronger enforcement of data shape and better handling of database operations. Without stricter schemas and validation, malformed records could reach the database. Without indexes, common lookups and sorted trip retrieval would be less efficient as data grew.</p>
+                </article>
+
+                <article class="reflection-block">
+                    <h2>Design Decisions</h2>
+                    <p>I used Mongoose schema options and validators to move data integrity closer to the persistence layer. The trip schema uses `strict: 'throw'`, timestamps, no version key, field length limits, numeric bounds, date validation, safe image path validation, a unique code index, and a compound start/name index. The user schema stores salted password material with `select: false`, excludes hash and salt from JSON/object transforms, and enforces a unique username index.</p>
+                </article>
+
+                <article class="reflection-block">
+                    <h2>Implementation Details</h2>
+                    <p>The database module now reads `MONGODB_URI`, `MONGODB_TIMEOUT_MS`, `MONGODB_ENSURE_INDEXES`, and `TRAVLR_SEED_DATA` from configuration. It disables command buffering, enables sanitized filters, sets strict query behavior, reuses a connection promise, initializes model indexes, and seeds normalized trip data only when explicitly enabled. The trip service uses lean reads for list and detail endpoints, `countDocuments` for pagination metadata, `findOneAndUpdate` with `runValidators: true`, and `findOneAndDelete` for delete operations. Duplicate keys, validation errors, strict mode errors, and invalid ObjectIds are normalized into clear API responses.</p>
+                </article>
+
+                <article class="reflection-block">
+                    <h2>Challenges Encountered</h2>
+                    <p>The main challenge was protecting the database layer while keeping the API usable. Trip records needed human-readable codes, but the API also needed to support ObjectId lookup safely. User records needed authentication support without exposing password hashes or salts. Seed data also needed normalization so records without codes could still satisfy the unique code constraint.</p>
+                </article>
+
+                <article class="reflection-block">
+                    <h2>Testing Performed</h2>
+                    <p>The repository includes tests for duplicate trip codes, validation failures, invalid ObjectId-like identifiers, unsupported fields, unsafe image values, password validation rules, registration without returning hash or salt values, not-found behavior, and protected database mutation routes.</p>
+                </article>
+
+                <article class="reflection-block">
+                    <h2>Results</h2>
+                    <p>The enhanced database layer now enforces a clearer data contract, protects sensitive user fields, supports indexed trip lookup and sorting, validates updates, and produces predictable API errors for common persistence failures. These changes make the application more scalable and more resilient to malformed input.</p>
+                </article>
+
+                <article class="reflection-block">
+                    <h2>Reflection</h2>
+                    <p>This enhancement showed that database design is both a correctness concern and a security concern. Strong schemas, indexes, sanitized filters, and validation-backed CRUD operations reduce risk and make the rest of the application easier to maintain.</p>
+                </article>
+
+                <article class="reflection-block">
+                    <h2>Skills Demonstrated</h2>
+                    <p>Skills demonstrated include MongoDB modeling, Mongoose schema design, index design, validation, password storage safeguards, duplicate handling, safe query construction, environment-based configuration, and persistence-layer testing.</p>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <!-- Shared site footer. -->
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <p>&copy; <span id="current-year"></span> Matthew Petschauer. CS499 Computer Science Capstone ePortfolio.</p>
+            <div class="footer-links" aria-label="Footer navigation">
+                <a href="artifacts.html">Artifacts</a>
+                <a href="code-review.html">Code Review</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>

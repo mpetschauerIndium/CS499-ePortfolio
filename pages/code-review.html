@@ -43,17 +43,30 @@
                 <p class="eyebrow">Code Review</p>
                 <h1>Capstone Code Review Video</h1>
                 <p>
-                    [Code review introduction placeholder: describe the purpose of the review and how it informed the
-                    enhancement plan for the capstone artifact.]
+                    The code review evaluated the original CS465 TRAVLR application and established the enhancement
+                    plan used for the CS499 capstone. The review focused on architecture, security, database design,
+                    algorithmic behavior, and maintainability risks that could be improved in the final project.
                 </p>
             </div>
         </section>
 
-        <!-- Video placeholder can be replaced with an iframe from YouTube, Panopto, or another approved host. -->
+        <!-- Code review focus panel summarizes the review when the portfolio is opened statically. -->
         <section class="section">
             <div class="container">
-                <div class="video-placeholder" role="img" aria-label="Embedded code review video placeholder">
-                    <span>Large Embedded Video Placeholder</span>
+                <div class="review-frame" aria-label="Code review focus summary">
+                    <div class="review-frame-content">
+                        <p class="eyebrow">Review Focus</p>
+                        <h2>Original TRAVLR Application Review</h2>
+                        <p>
+                            The review identified opportunities to move the application beyond a classroom prototype
+                            by strengthening route protection, separating API responsibilities, validating requests,
+                            improving MongoDB schema behavior, and adding test coverage for important backend workflows.
+                        </p>
+                        <div class="button-row">
+                            <a class="button button-primary button-external" href="https://github.com/mpetschauerIndium/Travlr_School">View Source Code</a>
+                            <a class="button button-secondary" href="../documents/cs499-capstone-enhancement-narrative.docx" download>Download Narrative</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -64,21 +77,24 @@
                 <article class="card card-large">
                     <h2>Summary</h2>
                     <p>
-                        [Summary placeholder: explain the original artifact's strengths, identified improvement areas,
-                        and the planned enhancements across software engineering, algorithms, and databases.]
+                        The original artifact already included a travel application structure with Express routes,
+                        public server-rendered pages, an Angular administrative client, and MongoDB-backed trip data.
+                        The review showed that the strongest capstone opportunities were to improve security,
+                        organize backend responsibilities, protect administrative write operations, strengthen
+                        validation, and make trip retrieval and persistence more predictable.
                     </p>
-                    <a class="button button-primary" href="#">View Source Code</a>
+                    <a class="button button-primary button-external" href="https://github.com/mpetschauerIndium/Travlr_School">View Source Code</a>
                 </article>
 
                 <article class="card card-large">
                     <h2>Topics Covered</h2>
                     <ul class="check-list">
-                        <li>[Original artifact overview placeholder]</li>
-                        <li>[Code structure and maintainability placeholder]</li>
-                        <li>[Algorithm and data structure analysis placeholder]</li>
-                        <li>[Database design and persistence placeholder]</li>
-                        <li>[Security considerations placeholder]</li>
-                        <li>[Enhancement roadmap placeholder]</li>
+                        <li>Original artifact structure, including Express, HBS views, Angular admin pages, and MongoDB trip data.</li>
+                        <li>Code structure and maintainability improvements through controllers, services, middleware, and utilities.</li>
+                        <li>Algorithm and data structure improvements for pagination, sorting, trip identity handling, and Angular state.</li>
+                        <li>Database design improvements with Mongoose validation, indexes, sanitized filters, and safer update behavior.</li>
+                        <li>Security considerations including JWT authentication, salted password hashing, protected routes, and request validation.</li>
+                        <li>Enhancement roadmap across software design, algorithms and data structures, and database persistence.</li>
                     </ul>
                 </article>
             </div>

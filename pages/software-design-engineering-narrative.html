@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Software design and engineering enhancement narrative for Matthew Petschauer's SNHU CS499 ePortfolio.">
+    <title>Software Design &amp; Engineering Narrative | Matthew Petschauer</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <!-- Skip link improves keyboard navigation and accessibility. -->
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <!-- Shared site header and responsive navigation. -->
+    <header class="site-header">
+        <nav class="navbar container" aria-label="Primary navigation">
+            <a class="brand" href="../index.html" aria-label="Matthew Petschauer home">
+                <span class="brand-mark" aria-hidden="true">MP</span>
+                <span>Matthew Petschauer</span>
+            </a>
+
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-menu">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="nav-toggle-line"></span>
+                <span class="nav-toggle-line"></span>
+                <span class="nav-toggle-line"></span>
+            </button>
+
+            <ul class="nav-menu" id="primary-menu">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="self-assessment.html">Self-Assessment</a></li>
+                <li><a href="code-review.html">Code Review</a></li>
+                <li><a href="artifacts.html">Artifacts</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <!-- Page hero introduces the enhancement narrative. -->
+        <section class="page-hero section">
+            <div class="container narrow">
+                <p class="eyebrow">Enhancement One</p>
+                <h1>Software Design &amp; Engineering Narrative</h1>
+                <p>
+                    This narrative describes the architectural, security, and maintainability improvements made to the CS465 TRAVLR application for the CS499 capstone.
+                </p>
+            </div>
+        </section>
+
+        <!-- Narrative content uses the existing reflection block styling. -->
+        <section class="section">
+            <div class="container content-stack">
+                <article class="reflection-block">
+                    <h2>Artifact Overview</h2>
+                    <p>The artifact is the TRAVLR travel application, a Node.js and Express application with public HBS-rendered pages, a REST API, an Angular administrative client, and MongoDB persistence through Mongoose. The enhancement focused on moving the application toward a more enterprise-oriented structure without replacing the core product.</p>
+                </article>
+
+                <article class="reflection-block">
+                    <h2>Why the Artifact Was Selected</h2>
+                    <p>I selected TRAVLR because it already represented a complete full-stack application, but its original structure provided opportunities to improve separation of concerns, route protection, validation, error handling, and maintainability. This made it a strong candidate for demonstrating software engineering growth.</p>
+                </article>
+
+                <article class="reflection-block">
+                    <h2>Enhancement Goals</h2>
+                    <p>The main goals were to protect administrative write operations, separate controllers from business logic, centralize request validation and response handling, improve project organization, and make the application easier to test and maintain. I also wanted the Angular admin client to align with the backend security model by storing authentication state, attaching authorization headers, and routing unauthenticated users to the login page.</p>
+                </article>
+
+                <article class="reflection-block">
+                    <h2>Analysis of the Original Artifact</h2>
+                    <p>The original artifact had the core pieces of a travel application, but important concerns were not isolated enough for long-term maintainability. API routes, validation, persistence behavior, and error responses needed clearer boundaries. Administrative create, update, and delete behavior also needed protection so that public API access did not imply unrestricted data modification.</p>
+                </article>
+
+                <article class="reflection-block">
+                    <h2>Design Decisions</h2>
+                    <p>I introduced a service layer in `app_api/services/auth.service.js` and `app_api/services/trip.service.js` so controllers could focus on HTTP concerns while services handled authentication and trip persistence operations. I kept route definitions explicit in `app_api/routes/index.js`, where read routes remain public and write routes use the authentication middleware. The Express app now exposes `createApp`, which allows the database connector, API router, and server router to be injected during testing.</p>
+                </article>
+
+                <article class="reflection-block">
+                    <h2>Implementation Details</h2>
+                    <p>The backend now includes registration and login endpoints, HMAC-signed JWT-shaped tokens, Bearer token middleware, centralized JSON helpers, normalized error handling, request logging, request body size limits, CORS configuration, and database availability middleware. Trip controllers now call shared utilities such as `buildTripPayload`, `validateTripPayload`, `normalizeTripIdentifier`, `parsePagination`, and `sendError` instead of duplicating validation and response logic. The Angular client was reorganized into `core`, `home`, `static-pages`, and `trips` areas, with an auth service, auth guard, auth interceptor, trip service, trip list, trip card, and trip form components.</p>
+                </article>
+
+                <article class="reflection-block">
+                    <h2>Challenges Encountered</h2>
+                    <p>The primary challenge was improving the architecture without changing the purpose of the application. Authentication had to protect mutating operations while keeping public trip reads available. Error responses also needed to remain predictable across validation errors, duplicate keys, missing records, malformed identifiers, and unexpected server failures.</p>
+                </article>
+
+                <article class="reflection-block">
+                    <h2>Testing Performed</h2>
+                    <p>The repository includes Node test coverage for registration, login, protected create/update/delete operations, duplicate handling, invalid credentials, pagination headers, identifier validation, and not-found responses. It also includes Angular component tests for the trip list loading and error states and the trip form component creation.</p>
+                </article>
+
+                <article class="reflection-block">
+                    <h2>Results</h2>
+                    <p>The result is a more modular TRAVLR application with clearer backend boundaries, protected administrative API operations, more consistent error handling, and a client-side admin flow that supports authentication-aware behavior. These changes make the application easier to reason about, test, and extend.</p>
+                </article>
+
+                <article class="reflection-block">
+                    <h2>Reflection</h2>
+                    <p>This enhancement demonstrates growth from building a working application to engineering a maintainable system. The most important improvement was not a single feature, but the separation of responsibilities across routes, controllers, services, middleware, utilities, and Angular feature areas.</p>
+                </article>
+
+                <article class="reflection-block">
+                    <h2>Skills Demonstrated</h2>
+                    <p>Skills demonstrated include modular architecture, REST API design, route protection, authentication workflow design, validation, centralized error handling, logging, testability, Angular routing, Angular services, HTTP interceptors, and maintainable project organization.</p>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <!-- Shared site footer. -->
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <p>&copy; <span id="current-year"></span> Matthew Petschauer. CS499 Computer Science Capstone ePortfolio.</p>
+            <div class="footer-links" aria-label="Footer navigation">
+                <a href="artifacts.html">Artifacts</a>
+                <a href="code-review.html">Code Review</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>

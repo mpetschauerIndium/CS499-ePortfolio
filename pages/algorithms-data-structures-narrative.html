@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Algorithms and data structures enhancement narrative for Matthew Petschauer's SNHU CS499 ePortfolio.">
+    <title>Algorithms &amp; Data Structures Narrative | Matthew Petschauer</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <!-- Skip link improves keyboard navigation and accessibility. -->
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <!-- Shared site header and responsive navigation. -->
+    <header class="site-header">
+        <nav class="navbar container" aria-label="Primary navigation">
+            <a class="brand" href="../index.html" aria-label="Matthew Petschauer home">
+                <span class="brand-mark" aria-hidden="true">MP</span>
+                <span>Matthew Petschauer</span>
+            </a>
+
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-menu">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="nav-toggle-line"></span>
+                <span class="nav-toggle-line"></span>
+                <span class="nav-toggle-line"></span>
+            </button>
+
+            <ul class="nav-menu" id="primary-menu">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="self-assessment.html">Self-Assessment</a></li>
+                <li><a href="code-review.html">Code Review</a></li>
+                <li><a href="artifacts.html">Artifacts</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <!-- Page hero introduces the enhancement narrative. -->
+        <section class="page-hero section">
+            <div class="container narrow">
+                <p class="eyebrow">Enhancement Two</p>
+                <h1>Algorithms &amp; Data Structures Narrative</h1>
+                <p>
+                    This narrative explains the algorithmic improvements made to trip retrieval, validation, identity handling, seed normalization, and Angular state management.
+                </p>
+            </div>
+        </section>
+
+        <!-- Narrative content uses the existing reflection block styling. -->
+        <section class="section">
+            <div class="container content-stack">
+                <article class="reflection-block">
+                    <h2>Artifact Overview</h2>
+                    <p>The TRAVLR artifact manages trip records that include names, codes, dates, resorts, prices, images, and descriptions. The algorithms enhancement focused on how these records are normalized, identified, sorted, paginated, and rendered by the client.</p>
+                </article>
+
+                <article class="reflection-block">
+                    <h2>Why the Artifact Was Selected</h2>
+                    <p>The artifact was selected because trip inventory data naturally benefits from predictable ordering, safe identifiers, pagination, and reusable validation routines. These concerns are practical examples of algorithmic thinking in a full-stack application.</p>
+                </article>
+
+                <article class="reflection-block">
+                    <h2>Enhancement Goals</h2>
+                    <p>The goals were to avoid unbounded list retrieval, provide deterministic trip ordering, normalize data before persistence, generate safe trip codes for seed data, validate path identifiers before querying MongoDB, and improve Angular rendering behavior with stable tracking and derived state.</p>
+                </article>
+
+                <article class="reflection-block">
+                    <h2>Analysis of the Original Artifact</h2>
+                    <p>The original artifact displayed and managed trip data, but it needed stronger algorithmic controls around data normalization and retrieval. Without pagination, deterministic sorting, and safe identifier construction, the API would be harder to scale and more vulnerable to malformed input.</p>
+                </article>
+
+                <article class="reflection-block">
+                    <h2>Design Decisions</h2>
+                    <p>I separated reusable algorithmic logic into utility modules instead of embedding it directly in controllers. Pagination lives in `app_api/utils/pagination.js`, trip identity handling lives in `app_api/utils/trip-identity.js`, trip payload normalization lives in `app_api/utils/trip-payload.js`, and seed code generation lives in `app_api/utils/trip-code.js`. This keeps the algorithms testable and reusable.</p>
+                </article>
+
+                <article class="reflection-block">
+                    <h2>Implementation Details</h2>
+                    <p>Trip list retrieval now uses page and pageSize query parameters, a maximum page size of 100, skip/limit database access, deterministic sorting by start date and name, and response headers for page metadata. Trip identifiers are normalized as either valid MongoDB ObjectIds or uppercase trip codes, preventing ambiguous or injected query shapes. Seed trip codes are slugified, uppercased, checked against the allowed pattern, and made unique with numeric suffixes when collisions occur. On the Angular side, the trip list uses signals and a computed inventory count, while `trackByTripCode` gives Angular a stable key for repeated trip cards.</p>
+                </article>
+
+                <article class="reflection-block">
+                    <h2>Challenges Encountered</h2>
+                    <p>The main challenge was balancing flexibility with safety. The API needed to support both MongoDB ObjectIds and human-readable trip codes, but it also needed to reject invalid ObjectId-like strings and unsupported input shapes. The seed-code algorithm also needed to produce readable codes without creating duplicates.</p>
+                </article>
+
+                <article class="reflection-block">
+                    <h2>Testing Performed</h2>
+                    <p>The test suite covers valid trip payload normalization, missing fields, unsupported fields, unsafe image values, invalid ObjectIds, injected identifier strings, pagination validation, pagination headers, and unique seed code generation. Angular tests verify loading state, inventory count derivation, rendered trip content, and error behavior in the trip list.</p>
+                </article>
+
+                <article class="reflection-block">
+                    <h2>Results</h2>
+                    <p>The API now retrieves trip data in bounded, predictable pages and returns metadata that a client can use for pagination. Trip identifiers are safer, seed records produce consistent codes, and the Angular trip list derives inventory state cleanly from the loaded trip collection.</p>
+                </article>
+
+                <article class="reflection-block">
+                    <h2>Reflection</h2>
+                    <p>This enhancement reinforced that algorithms are not limited to abstract exercises. Pagination, sorting, normalization, unique code generation, state derivation, and safe query construction all have direct impact on maintainability, performance, and security in a production-style application.</p>
+                </article>
+
+                <article class="reflection-block">
+                    <h2>Skills Demonstrated</h2>
+                    <p>Skills demonstrated include pagination design, deterministic sorting, input normalization, regular-expression validation, collision handling, safe query construction, derived client state, Angular signal usage, RxJS error handling, and test-driven validation of edge cases.</p>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <!-- Shared site footer. -->
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <p>&copy; <span id="current-year"></span> Matthew Petschauer. CS499 Computer Science Capstone ePortfolio.</p>
+            <div class="footer-links" aria-label="Footer navigation">
+                <a href="artifacts.html">Artifacts</a>
+                <a href="code-review.html">Code Review</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>

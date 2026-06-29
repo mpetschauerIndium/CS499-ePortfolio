@@ -41,80 +41,236 @@
         <section class="page-hero section">
             <div class="container narrow">
                 <p class="eyebrow">Capstone Artifacts</p>
-                <h1>Original Work and Enhancements</h1>
+                <h1>Travlr Getaways Admin</h1>
                 <p>
-                    [Artifacts page introduction placeholder: describe the selected artifact and how each enhancement
-                    demonstrates specific computer science outcomes.]
+                    A completed full-stack administrative application that connects an Angular frontend, Express.js REST API,
+                    and MongoDB database with secure authentication and protected trip management workflows.
                 </p>
             </div>
         </section>
 
-        <!-- Artifact cards provide a consistent structure for screenshots, summaries, technologies, and links. -->
+        <!-- Project overview positions the completed capstone as the featured portfolio project. -->
+        <section class="section">
+            <div class="container project-showcase">
+                <div class="project-copy">
+                    <p class="eyebrow">Project Overview</p>
+                    <h2>Purpose of Travlr Getaways Admin</h2>
+                    <p>
+                        Travlr Getaways Admin is an administrative console for maintaining travel package inventory.
+                        The application allows authenticated administrators to manage trip records, including names,
+                        codes, resort details, trip lengths, start dates, prices, images, and descriptions. The finished
+                        project demonstrates full-stack communication between Angular, Express.js, and MongoDB while
+                        protecting administrative write operations with token-based authentication.
+                    </p>
+                    <div class="tag-list" aria-label="Travlr project technologies">
+                        <span>Angular</span>
+                        <span>TypeScript</span>
+                        <span>Express.js</span>
+                        <span>Node.js</span>
+                        <span>MongoDB</span>
+                        <span>Mongoose</span>
+                        <span>JWT Authentication</span>
+                        <span>REST APIs</span>
+                    </div>
+                    <div class="button-row">
+                        <a class="button button-primary button-external" href="https://github.com/mpetschauerIndium/Travlr_School">View Source Code</a>
+                        <a class="button button-secondary" href="../documents/cs499-capstone-enhancement-narrative.docx" download>Download Enhancement Narrative</a>
+                    </div>
+                </div>
+
+                <figure class="project-screenshot">
+                    <img src="../assets/screenshots/travlr-admin-dashboard.png" alt="Travlr Getaways Admin dashboard after successful login">
+                    <figcaption>Administrative dashboard after login.</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <!-- Feature and architecture sections summarize the completed full-stack implementation. -->
+        <section class="section section-muted">
+            <div class="container project-section">
+                <div class="section-heading">
+                    <p class="eyebrow">Completed Functionality</p>
+                    <h2>Features</h2>
+                    <p>The final capstone implementation supports authenticated administration, persistent trip records, and clear frontend-to-backend communication.</p>
+                </div>
+
+                <div class="project-grid">
+                    <article class="card project-card">
+                        <h3>Secure Administrator Authentication</h3>
+                        <p>Administrators log in through the Angular client. The Express API validates credentials and returns a signed JWT authentication token for authenticated requests.</p>
+                    </article>
+                    <article class="card project-card">
+                        <h3>Trip Management CRUD</h3>
+                        <p>The admin interface supports creating, reading, updating, and deleting trip records through protected REST API endpoints.</p>
+                    </article>
+                    <article class="card project-card">
+                        <h3>MongoDB Persistence</h3>
+                        <p>Trip and user records persist in MongoDB using Mongoose schemas, validation, indexes, and controlled database connection behavior.</p>
+                    </article>
+                    <article class="card project-card">
+                        <h3>Responsive Angular Interface</h3>
+                        <p>The Angular admin client provides routed pages for login, dashboard content, trip inventory, and the add/edit trip form.</p>
+                    </article>
+                    <article class="card project-card">
+                        <h3>RESTful Backend Architecture</h3>
+                        <p>The Express API separates routes, controllers, services, middleware, models, and utilities for improved maintainability.</p>
+                    </article>
+                    <article class="card project-card">
+                        <h3>Protected Administrative Routes</h3>
+                        <p>Create, update, and delete operations require a Bearer token, and the Angular add/edit route is guarded for authenticated users.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Architecture flow presents the core frontend, API, and database relationship. -->
+        <section class="section">
+            <div class="container project-section">
+                <div class="section-heading">
+                    <p class="eyebrow">Architecture</p>
+                    <h2>Full-Stack Data Flow</h2>
+                    <p>The application follows a straightforward full-stack JavaScript flow where the Angular administrative client communicates with Express API endpoints that read from and write to MongoDB.</p>
+                </div>
+
+                <div class="architecture-flow" aria-label="Travlr application data flow">
+                    <div>Angular Frontend</div>
+                    <span aria-hidden="true"></span>
+                    <div>Express REST API</div>
+                    <span aria-hidden="true"></span>
+                    <div>MongoDB Database</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Screenshot gallery supports the project narrative with completed application evidence. -->
+        <section class="section section-muted">
+            <div class="container project-section">
+                <div class="section-heading">
+                    <p class="eyebrow">Application Screenshots</p>
+                    <h2>Finished Capstone Evidence</h2>
+                    <p>The screenshots below show the completed administrative login, dashboard, trip management workflow, and add-trip form.</p>
+                </div>
+
+                <div class="screenshot-gallery">
+                    <figure class="screenshot-card">
+                        <img src="../assets/screenshots/travlr-login-http-200.png" alt="Network panel showing successful administrator login with HTTP 200 response">
+                        <figcaption>Successful administrator login with HTTP 200 authentication response.</figcaption>
+                    </figure>
+                    <figure class="screenshot-card">
+                        <img src="../assets/screenshots/travlr-admin-dashboard.png" alt="Travlr Getaways Admin dashboard after login">
+                        <figcaption>Administrative dashboard after login.</figcaption>
+                    </figure>
+                    <figure class="screenshot-card">
+                        <img src="../assets/screenshots/travlr-trips-management.png" alt="Trips management page showing existing trip with edit and delete actions">
+                        <figcaption>Trips management page with Edit and Delete functionality.</figcaption>
+                    </figure>
+                    <figure class="screenshot-card">
+                        <img src="../assets/screenshots/travlr-add-trip-form.png" alt="Add Trip administrative form with trip fields">
+                        <figcaption>Add Trip form for creating new travel packages.</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <!-- Challenges and learning outcomes connect implementation details to professional growth. -->
+        <section class="section">
+            <div class="container two-column">
+                <article class="card card-large">
+                    <h2>Challenges &amp; Solutions</h2>
+                    <ul class="check-list">
+                        <li><strong>JWT authentication:</strong> Implemented signed tokens and Bearer token middleware to protect administrative API writes.</li>
+                        <li><strong>Password hashing and salting:</strong> Stored salted PBKDF2 password hashes instead of plaintext credentials.</li>
+                        <li><strong>MongoDB integration:</strong> Used Mongoose schemas, validation, indexes, and connection configuration to improve persistence reliability.</li>
+                        <li><strong>Angular/Express communication:</strong> Added an Angular service layer and HTTP interceptor so API requests use the configured backend and authorization token.</li>
+                        <li><strong>CORS troubleshooting:</strong> Configured Express CORS for the Angular development origin and Authorization headers.</li>
+                        <li><strong>API routing:</strong> Organized REST routes for authentication and trip CRUD operations with protected create, update, and delete endpoints.</li>
+                    </ul>
+                </article>
+
+                <article class="card card-large">
+                    <h2>Learning Outcomes</h2>
+                    <p>
+                        Building the completed Travlr Getaways Admin project strengthened my understanding of how frontend,
+                        backend, authentication, and persistence layers work together in a full-stack application. I practiced
+                        integrating Angular components and services with Express routes, designing Mongoose schemas, securing
+                        administrative workflows, handling API errors, and validating data before it reaches the database.
+                    </p>
+                    <p>
+                        The project also reinforced the importance of modular architecture. Separating routes, controllers,
+                        services, middleware, models, utilities, and Angular feature areas made the system easier to test,
+                        maintain, and explain as a professional software engineering portfolio artifact.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Artifact cards provide a consistent structure for summaries, technologies, and narrative links. -->
         <section class="section">
             <div class="container artifact-grid">
                 <article class="artifact-card">
-                    <div class="screenshot-placeholder" role="img" aria-label="Original artifact screenshot placeholder">
-                        <span>Screenshot Placeholder</span>
+                    <div class="media-frame" role="img" aria-label="Original TRAVLR homepage screenshot">
+                        <img src="../assets/screenshots/original-homepage.png" alt="Original TRAVLR homepage before capstone enhancements">
                     </div>
                     <div class="artifact-content">
                         <p class="eyebrow">Original Artifact</p>
                         <h2>Original Artifact</h2>
-                        <p><strong>Summary:</strong> [Original artifact summary placeholder.]</p>
-                        <p><strong>Technologies:</strong> [Technology placeholders.]</p>
+                        <p class="artifact-meta"><strong>Summary:</strong> The original CS465 TRAVLR artifact is a full-stack travel application with public Express/HBS views, an Angular admin client, and MongoDB-backed trip data. It provided the foundation for improving the application into a more secure and maintainable capstone project.</p>
+                        <p class="artifact-meta"><strong>Technologies:</strong> <span class="tech-badge">Node.js, Express, HBS, Angular, TypeScript, MongoDB, Mongoose</span></p>
+                        <p class="artifact-meta"><strong>Skills Demonstrated:</strong> Full-stack application structure, REST API integration, data modeling, server-rendered public pages, and admin UI development.</p>
                         <div class="button-row">
-                            <a class="button button-secondary" href="#">View Narrative</a>
-                            <a class="button button-ghost" href="#">View Source Code</a>
+                            <a class="button button-secondary" href="original-artifact-narrative.html">View Narrative</a>
+                            <a class="button button-ghost button-external" href="https://github.com/mpetschauerIndium/Travlr_School">View Source Code</a>
                         </div>
                     </div>
                 </article>
 
                 <article class="artifact-card">
-                    <div class="screenshot-placeholder" role="img" aria-label="Software design enhancement screenshot placeholder">
-                        <span>Screenshot Placeholder</span>
+                    <div class="media-frame" role="img" aria-label="Software design and engineering enhancement screenshot">
+                        <img src="../assets/screenshots/travlr-admin-dashboard.png" alt="Travlr Getaways Admin dashboard showing organized admin workspace">
                     </div>
                     <div class="artifact-content">
                         <p class="eyebrow">Enhancement One</p>
                         <h2>Software Design & Engineering Enhancement</h2>
-                        <p><strong>Summary:</strong> [Software design and engineering enhancement summary placeholder.]</p>
-                        <p><strong>Skills Demonstrated:</strong> [Skills demonstrated placeholder.]</p>
-                        <p><strong>Technologies:</strong> [Technology placeholders.]</p>
+                        <p class="artifact-meta"><strong>Summary:</strong> The application was refactored into a more maintainable architecture with protected API write routes, authentication services, controller/service separation, centralized validation, error normalization, API logging, and organized Angular feature and core modules.</p>
+                        <p class="artifact-meta"><strong>Skills Demonstrated:</strong> Modular design, separation of concerns, secure route protection, request validation, exception handling, manual dependency injection for testability, and enterprise-oriented project organization.</p>
+                        <p class="artifact-meta"><strong>Technologies:</strong> <span class="tech-badge">Node.js, Express, Angular, TypeScript, RxJS, MongoDB, Mongoose</span></p>
                         <div class="button-row">
-                            <a class="button button-secondary" href="#">View Narrative</a>
-                            <a class="button button-ghost" href="#">View Source Code</a>
+                            <a class="button button-secondary" href="software-design-engineering-narrative.html">View Narrative</a>
+                            <a class="button button-ghost button-external" href="https://github.com/mpetschauerIndium/Travlr_School">View Source Code</a>
                         </div>
                     </div>
                 </article>
 
                 <article class="artifact-card">
-                    <div class="screenshot-placeholder" role="img" aria-label="Algorithms and data structures enhancement screenshot placeholder">
-                        <span>Screenshot Placeholder</span>
+                    <div class="media-frame" role="img" aria-label="Algorithms and data structures enhancement screenshot">
+                        <img src="../assets/screenshots/travlr-trips-management.png" alt="Trips management page showing persisted trip inventory and stable edit delete actions">
                     </div>
                     <div class="artifact-content">
                         <p class="eyebrow">Enhancement Two</p>
                         <h2>Algorithms & Data Structures Enhancement</h2>
-                        <p><strong>Summary:</strong> [Algorithms and data structures enhancement summary placeholder.]</p>
-                        <p><strong>Skills Demonstrated:</strong> [Skills demonstrated placeholder.]</p>
-                        <p><strong>Technologies:</strong> [Technology placeholders.]</p>
+                        <p class="artifact-meta"><strong>Summary:</strong> Algorithmic improvements include paginated trip retrieval, deterministic sorting by start date and name, safe trip identifier normalization, unique seed trip code generation, normalized request payloads, and Angular signal-based inventory state.</p>
+                        <p class="artifact-meta"><strong>Skills Demonstrated:</strong> Pagination, sorted query design, data normalization, identifier validation, defensive input handling, derived UI state, and performance-conscious rendering with stable trip-code tracking.</p>
+                        <p class="artifact-meta"><strong>Technologies:</strong> <span class="tech-badge">JavaScript, TypeScript, Express, Mongoose, Angular Signals, RxJS</span></p>
                         <div class="button-row">
-                            <a class="button button-secondary" href="#">View Narrative</a>
-                            <a class="button button-ghost" href="#">View Source Code</a>
+                            <a class="button button-secondary" href="algorithms-data-structures-narrative.html">View Narrative</a>
+                            <a class="button button-ghost button-external" href="https://github.com/mpetschauerIndium/Travlr_School">View Source Code</a>
                         </div>
                     </div>
                 </article>
 
                 <article class="artifact-card">
-                    <div class="screenshot-placeholder" role="img" aria-label="Database enhancement screenshot placeholder">
-                        <span>Screenshot Placeholder</span>
+                    <div class="media-frame" role="img" aria-label="Database enhancement screenshot">
+                        <img src="../assets/screenshots/travlr-add-trip-form.png" alt="Add Trip form used to create MongoDB-backed trip records">
                     </div>
                     <div class="artifact-content">
                         <p class="eyebrow">Enhancement Three</p>
                         <h2>Database Enhancement</h2>
-                        <p><strong>Summary:</strong> [Database enhancement summary placeholder.]</p>
-                        <p><strong>Skills Demonstrated:</strong> [Skills demonstrated placeholder.]</p>
-                        <p><strong>Technologies:</strong> [Technology placeholders.]</p>
+                        <p class="artifact-meta"><strong>Summary:</strong> MongoDB persistence was strengthened with strict Mongoose schemas, field validation, timestamps, sanitized filters, controlled seed data, index initialization, unique trip and user indexes, lean read queries, and validator-backed update operations.</p>
+                        <p class="artifact-meta"><strong>Skills Demonstrated:</strong> Schema design, indexing, data integrity, secure query construction, database configuration, duplicate handling, and maintainable persistence-layer design.</p>
+                        <p class="artifact-meta"><strong>Technologies:</strong> <span class="tech-badge">MongoDB, Mongoose, Node.js, Express</span></p>
                         <div class="button-row">
-                            <a class="button button-secondary" href="#">View Narrative</a>
-                            <a class="button button-ghost" href="#">View Source Code</a>
+                            <a class="button button-secondary" href="database-enhancement-narrative.html">View Narrative</a>
+                            <a class="button button-ghost button-external" href="https://github.com/mpetschauerIndium/Travlr_School">View Source Code</a>
                         </div>
                     </div>
                 </article>

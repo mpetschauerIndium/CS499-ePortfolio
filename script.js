@@ -4,9 +4,20 @@
    ========================================================================== */
 
 document.addEventListener("DOMContentLoaded", function () {
+    const siteHeader = document.querySelector(".site-header");
     const navToggle = document.querySelector(".nav-toggle");
     const navMenu = document.querySelector(".nav-menu");
     const yearElement = document.querySelector("#current-year");
+
+    /* Add a subtle shadow to the sticky header after the page scrolls. */
+    function updateHeaderState() {
+        if (siteHeader) {
+            siteHeader.classList.toggle("is-scrolled", window.scrollY > 8);
+        }
+    }
+
+    updateHeaderState();
+    window.addEventListener("scroll", updateHeaderState, { passive: true });
 
     /* Display the current year in the footer without requiring manual updates. */
     if (yearElement) {
@@ -15,6 +26,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     /* Toggle the mobile navigation menu and keep ARIA state in sync. */
     if (navToggle && navMenu) {
+        function closeNavigation() {
+            navMenu.classList.remove("is-open");
+            navToggle.setAttribute("aria-expanded", "false");
+            document.body.classList.remove("nav-open");
+        }
+
         navToggle.addEventListener("click", function () {
             const isOpen = navMenu.classList.toggle("is-open");
             navToggle.setAttribute("aria-expanded", String(isOpen));
@@ -23,9 +40,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
         navMenu.addEventListener("click", function (event) {
             if (event.target instanceof HTMLAnchorElement) {
-                navMenu.classList.remove("is-open");
-                navToggle.setAttribute("aria-expanded", "false");
-                document.body.classList.remove("nav-open");
+                closeNavigation();
+            }
+        });
+
+        document.addEventListener("keydown", function (event) {
+            if (event.key === "Escape") {
+                closeNavigation();
+                navToggle.focus();
+            }
+        });
+
+        document.addEventListener("click", function (event) {
+            const isNavigationClick = navMenu.contains(event.target) || navToggle.contains(event.target);
+
+            if (!isNavigationClick && navMenu.classList.contains("is-open")) {
+                closeNavigation();
             }
         });
     }
