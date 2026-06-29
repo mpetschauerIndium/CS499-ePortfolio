@@ -7,8 +7,8 @@
         {
             "type": "chrome",
             "request": "launch",
-            "name": "Open self-assessment.html",
-            "file": "c:\\Users\\mpetschauer\\OneDrive - Indium Corporation\\Desktop\\CS499\\Travlr\\CS499-ePortfolio\\pages\\self-assessment.html"
+            "name": "Open index.html",
+            "file": "C:/Users/mpetschauer/Downloads/CS499-ePortfolio ----test/CS499-ePortfolio/Index.html"
         }
     ]
 }

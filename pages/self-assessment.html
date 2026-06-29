@@ -27,8 +27,8 @@
             </button>
 
             <ul class="nav-menu" id="primary-menu">
-                <li><a href="../index.html">Home</a></li>
                 <li><a href="self-assessment.html" aria-current="page">Self-Assessment</a></li>
+                <li><a href="../index.html">Home</a></li>
                 <li><a href="code-review.html">Code Review</a></li>
                 <li><a href="artifacts.html">Artifacts</a></li>
                 <li><a href="contact.html">Contact</a></li>
@@ -41,60 +41,68 @@
         <section class="page-hero section">
             <div class="container narrow">
                 <p class="eyebrow">Professional Self-Assessment</p>
-                <h1>CS499 Capstone Reflection</h1>
+                <h1>CS499 Capstone Enhancement Narrative</h1>
                 <p>
-                    My CS499 capstone represents the progression from completing course-based programming assignments
-                    to building, evaluating, and refining a professional full-stack application. Through the Travlr
-                    Getaways Admin project, I demonstrated growth in software engineering, algorithms, databases,
-                    security, and technical communication.
+                    The assessment below summarizes my completed Travlr capstone work, including the architecture,
+                    security, database, algorithmic, and maintainability improvements made to the original CS465
+                    application.
                 </p>
-                <a class="button button-primary" href="../documents/professional-self-assessment.html" download>
-                    Download Professional Self Assessment
+                <a class="button button-primary" href="../documents/cs499-capstone-enhancement-narrative.docx" download>
+                    Download Capstone Enhancement Narrative
                 </a>
             </div>
         </section>
 
-        <!-- Reflection sections describe the professional growth demonstrated across the portfolio. -->
+        <!-- The assessment content is displayed directly on the page for reviewers. -->
         <section class="section">
             <div class="container content-stack">
                 <article class="reflection-block">
-                    <h2>Coursework Reflection</h2>
-                    <p>My computer science coursework provided the foundation for designing applications that are structured, testable, and maintainable. Earlier classes introduced programming fundamentals, data structures, databases, web development, and secure coding practices. In the capstone, I applied those concepts together by enhancing the original CS465 TRAVLR application into a more complete administrative system.</p>
+                    <h2>Introduction</h2>
+                    <p>For my CS499 capstone, I selected the Travlr application that I originally developed during CS465 as the artifact to enhance. The original application demonstrated a functional full-stack architecture using Express, Angular, and MongoDB, but it also reflected many of the characteristics of an academic project. While it met its original requirements, there were opportunities to improve its architecture, security, maintainability, and overall software quality.</p>
+                    <p>My goal throughout this capstone was not to redesign the application or add unnecessary features. Instead, I approached the project the same way I would approach an existing business application: identify the highest-value improvements while preserving the application's existing functionality. Rather than rewriting working code, I focused my effort on the portions of the system that would provide the greatest long-term benefit, including authentication, application architecture, database integrity, and code organization.</p>
+                    <p>This approach allowed me to demonstrate software engineering principles that extend beyond simply producing a working application. The completed project emphasizes maintainability, security, scalability, and separation of concerns while continuing to support the original functionality provided by the Travlr application.</p>
                 </article>
 
                 <article class="reflection-block">
-                    <h2>Collaboration</h2>
-                    <p>The capstone required the same habits used in professional development: reviewing existing code, identifying risks, planning enhancements, documenting decisions, and refining the work through feedback. I treated the project as an existing codebase that needed careful improvement rather than a blank-slate rewrite.</p>
+                    <h2>Software Design and Engineering</h2>
+                    <p>The most significant enhancement implemented during this capstone was the introduction of a complete authentication and authorization system. The original application exposed administrative functionality without verifying the identity of the user, which would not be acceptable in a production environment. I implemented administrator registration and login endpoints, secure password hashing using salted PBKDF2 hashes, token generation, and authorization middleware that protects all administrative CRUD operations while still allowing public users to browse available trips.</p>
+                    <p>Implementing authentication required coordinated changes throughout the application. The backend needed new API endpoints, secure password validation, token generation, and authorization middleware. The Angular client required login services, route guards, HTTP interceptors, and token storage to maintain authenticated sessions. This enhancement represented the largest engineering effort within the project because every layer of the application had to work together correctly while maintaining compatibility with existing functionality.</p>
+                    <p>Beyond authentication, I refactored the backend architecture to improve maintainability. In the original application, controllers performed HTTP processing, validation, and database interaction simultaneously. This tightly coupled design made future changes more difficult. I introduced a service layer to separate business logic from request handling, allowing controllers to focus exclusively on HTTP responsibilities while reusable services handled database operations and application logic.</p>
+                    <p>Additional middleware was introduced to support centralized error handling, request logging, request validation, CORS configuration, and database availability checks. These changes create a cleaner application architecture while improving debugging, maintainability, and testability.</p>
+                    <p>Although this project is academic in nature, I intentionally approached it as though it would require future maintenance. Throughout the enhancement process I focused on keeping code organized, well-commented where appropriate, and modular so future developers could more easily understand and extend the application.</p>
                 </article>
 
                 <article class="reflection-block">
-                    <h2>Communication</h2>
-                    <p>This portfolio demonstrates technical communication through artifact summaries, enhancement narratives, a code review summary, and project screenshots. The goal is to explain not only what was built, but why specific engineering decisions improved security, maintainability, scalability, and data integrity.</p>
+                    <h2>Algorithms and Data Structures</h2>
+                    <p>The algorithmic enhancements focused primarily on improving efficiency, consistency, and data quality.</p>
+                    <p>Pagination was added to prevent unbounded database queries as the number of trips increases. Rather than returning every document for each request, the application now supports configurable page sizes while enforcing reasonable limits to prevent excessive resource consumption.</p>
+                    <p>Trip retrieval was also improved through deterministic sorting based on trip start dates and names. Consistent ordering creates a more predictable user experience while allowing database indexes to improve query performance.</p>
+                    <p>Input normalization and validation represented another significant improvement. Incoming request payloads are validated, normalized, and converted into appropriate data types before persistence. Unsupported fields are rejected rather than ignored, reducing opportunities for malformed requests and improving overall application reliability.</p>
+                    <p>Within the Angular client, reusable components, derived state, and stable rendering keys were introduced to improve maintainability and reduce unnecessary rendering. While these optimizations are relatively small individually, together they contribute to a cleaner and more efficient application.</p>
                 </article>
 
                 <article class="reflection-block">
-                    <h2>Software Engineering</h2>
-                    <p>The software engineering enhancement refactored the application into clearer backend and frontend responsibilities. Express routes, controllers, services, middleware, utilities, and Mongoose models now have more focused roles, while the Angular client uses services, guards, interceptors, and routed components to support authenticated administrative workflows.</p>
+                    <h2>Database Enhancements</h2>
+                    <p>Database enhancements focused on improving both reliability and data integrity.</p>
+                    <p>The original project included MongoDB integration but relied on a less structured persistence model. During the enhancement process I introduced centralized database connection management, allowing the application to consistently establish and monitor database connectivity while providing predictable error handling when MongoDB is unavailable.</p>
+                    <p>Mongoose schemas were expanded to include stronger validation rules, required fields, data constraints, and strict schema enforcement. Unique indexes prevent duplicate trip codes while additional indexes improve query performance for commonly requested data.</p>
+                    <p>Administrative user records were redesigned to support secure authentication. Passwords are never stored directly. Instead, each password is combined with a unique salt and processed through PBKDF2 before storage. Sensitive fields such as password hashes and salts are excluded from serialized responses to reduce the risk of accidental exposure.</p>
+                    <p>Update operations were also enhanced to enforce schema validation during modifications, ensuring that invalid data cannot bypass validation simply because an existing document is being updated.</p>
+                    <p>Collectively, these database improvements provide stronger integrity guarantees while supporting more reliable application behavior.</p>
                 </article>
 
                 <article class="reflection-block">
-                    <h2>Algorithms</h2>
-                    <p>The algorithms and data structures enhancement improved how trip data is normalized, identified, retrieved, and rendered. Pagination, deterministic sorting, unique trip-code generation, safe identifier handling, derived Angular state, and stable list tracking all support a more predictable and scalable trip management experience.</p>
+                    <h2>Challenges and Lessons Learned</h2>
+                    <p>The largest technical challenge involved implementing authentication across an existing application. While creating secure login endpoints is relatively straightforward in isolation, integrating authentication throughout the backend API, Angular client, and MongoDB data model required considerably more planning and testing than expected. Ensuring that public trip browsing remained accessible while administrative operations required authorization introduced additional complexity that affected every layer of the application.</p>
+                    <p>Another challenge involved adapting to Visual Studio Code as the primary development environment. My professional experience has primarily involved developing enterprise applications using Visual Studio, JavaScript frameworks, C#, and SQL technologies. While the underlying engineering principles remain the same, transitioning to a different development environment required additional time to become comfortable with debugging, project organization, and tooling.</p>
+                    <p>One design decision I made intentionally was to avoid rewriting portions of the application that were already functioning correctly. Rather than attempting to redesign every aspect of the original project, I concentrated on enhancements that provided meaningful architectural value. Authentication, validation, database integrity, and code organization all produce measurable improvements in software quality, while less critical sections of the application were intentionally left unchanged. This mirrors how software enhancements are commonly approached within existing business applications, where preserving stability is often just as important as adding new functionality.</p>
                 </article>
 
                 <article class="reflection-block">
-                    <h2>Database</h2>
-                    <p>The database enhancement strengthened MongoDB persistence with stricter Mongoose schemas, validation rules, timestamps, indexes, sanitized filters, lean reads, validator-backed updates, and protected user password fields. These changes help preserve data quality and reduce risk as the application grows.</p>
-                </article>
-
-                <article class="reflection-block">
-                    <h2>Security</h2>
-                    <p>Security was a major focus of the capstone. The application now supports administrator login, JWT authentication, Bearer token middleware, protected create/update/delete routes, request validation, CORS configuration, and salted PBKDF2 password hashes instead of plaintext passwords.</p>
-                </article>
-
-                <article class="reflection-block">
-                    <h2>Career Goals</h2>
-                    <p>My goal is to continue growing as a software developer who can contribute to full-stack applications, backend APIs, data-driven systems, and secure administrative tools. The Travlr capstone shows the type of work I want to build professionally: practical, maintainable software that connects user needs with reliable technical implementation.</p>
+                    <h2>Conclusion</h2>
+                    <p>This capstone demonstrates my growth as a software engineer by applying modern software engineering practices to an existing application instead of simply developing new functionality. Throughout the project I emphasized maintainability, security, modularity, and long-term support while preserving the original behavior of the Travlr application.</p>
+                    <p>The completed application now includes secure authentication, protected administrative operations, improved application architecture, stronger database validation, reusable services, centralized error handling, and a more maintainable Angular frontend. More importantly, the project reflects an engineering mindset focused on making thoughtful improvements that increase software quality rather than introducing unnecessary complexity.</p>
+                    <p>This capstone represents the progression from developing functional software to engineering applications that are secure, maintainable, and prepared for future growth.</p>
                 </article>
             </div>
         </section>

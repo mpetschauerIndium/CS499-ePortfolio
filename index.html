@@ -27,8 +27,8 @@
             </button>
 
             <ul class="nav-menu" id="primary-menu">
-                <li><a href="index.html" aria-current="page">Home</a></li>
                 <li><a href="pages/self-assessment.html">Self-Assessment</a></li>
+                <li><a href="index.html" aria-current="page">Home</a></li>
                 <li><a href="pages/code-review.html">Code Review</a></li>
                 <li><a href="pages/artifacts.html">Artifacts</a></li>
                 <li><a href="pages/contact.html">Contact</a></li>
@@ -53,14 +53,161 @@
                     <div class="button-row" aria-label="Primary portfolio actions">
                         <a class="button button-primary" href="pages/self-assessment.html">Professional Self-Assessment</a>
                         <a class="button button-secondary" href="pages/artifacts.html">View Artifact</a>
-                        <a class="button button-ghost button-external" href="https://github.com/mpetschauerIndium/Travlr_School">GitHub</a>
+                        <a class="button button-ghost button-external" href="https://github.com/mpetschauerIndium/CS499-ePortfolio" target="_blank" rel="noopener noreferrer">GitHub</a>
                     </div>
                 </div>
 
-                <!-- Professional identity panel keeps the hero complete until a headshot is added. -->
-                <div class="headshot-card" aria-label="Professional profile summary">
-                    <div class="headshot-frame">
-                        <span>Full-Stack Capstone Portfolio</span>
+                <!-- Interactive architecture panel communicates full-stack capability without external dependencies. -->
+                <div class="headshot-card architecture-card" role="group" aria-labelledby="architecture-name" aria-describedby="architecture-summary">
+                    <div class="architecture-frame">
+                        <p id="architecture-summary" class="sr-only">
+                            Interactive software architecture visualization showing Matthew Petschauer connected to Angular,
+                            TypeScript, Node.js, Express.js, MongoDB, REST API, JWT, Git, and Azure DevOps.
+                        </p>
+
+                        <span class="architecture-lightband architecture-lightband-one" aria-hidden="true"></span>
+                        <span class="architecture-lightband architecture-lightband-two" aria-hidden="true"></span>
+
+                        <div class="architecture-particles" aria-hidden="true">
+                            <span style="--x: 18%; --y: 18%; --delay: -1s;"></span>
+                            <span style="--x: 42%; --y: 12%; --delay: -5s;"></span>
+                            <span style="--x: 73%; --y: 20%; --delay: -8s;"></span>
+                            <span style="--x: 84%; --y: 42%; --delay: -3s;"></span>
+                            <span style="--x: 69%; --y: 70%; --delay: -11s;"></span>
+                            <span style="--x: 46%; --y: 82%; --delay: -6s;"></span>
+                            <span style="--x: 21%; --y: 72%; --delay: -9s;"></span>
+                            <span style="--x: 12%; --y: 48%; --delay: -2s;"></span>
+                            <span style="--x: 58%; --y: 34%; --delay: -13s;"></span>
+                            <span style="--x: 32%; --y: 53%; --delay: -4s;"></span>
+                        </div>
+
+                        <svg class="architecture-lines" viewBox="0 0 640 520" aria-hidden="true" focusable="false">
+                            <defs>
+                                <linearGradient id="architecture-line-gradient" x1="80" y1="60" x2="560" y2="470" gradientUnits="userSpaceOnUse">
+                                    <stop offset="0" stop-color="#38bdf8"></stop>
+                                    <stop offset="0.48" stop-color="#14b8a6"></stop>
+                                    <stop offset="1" stop-color="#f59e0b"></stop>
+                                </linearGradient>
+                            </defs>
+
+                            <g class="architecture-connection-map">
+                                <path id="route-angular" class="architecture-path" data-connection="angular azure-devops" pathLength="1" d="M320 265 C272 232 224 128 134 88"></path>
+                                <path id="route-typescript" class="architecture-path" data-connection="typescript angular node" pathLength="1" d="M320 265 C318 206 318 116 320 52"></path>
+                                <path id="route-node" class="architecture-path" data-connection="node express rest-api" pathLength="1" d="M320 265 C370 216 424 124 499 88"></path>
+                                <path id="route-express" class="architecture-path" data-connection="express node rest-api" pathLength="1" d="M320 265 C386 242 466 236 531 250"></path>
+                                <path id="route-mongodb" class="architecture-path" data-connection="mongodb express node" pathLength="1" d="M320 265 C376 308 438 374 493 406"></path>
+                                <path id="route-rest-api" class="architecture-path" data-connection="rest-api express jwt" pathLength="1" d="M320 265 C325 326 324 388 320 447"></path>
+                                <path id="route-jwt" class="architecture-path" data-connection="jwt rest-api mongodb" pathLength="1" d="M320 265 C268 320 208 374 147 406"></path>
+                                <path id="route-git" class="architecture-path" data-connection="git azure-devops" pathLength="1" d="M320 265 C246 246 172 244 109 255"></path>
+                                <path id="route-azure-devops" class="architecture-path" data-connection="azure-devops git angular" pathLength="1" d="M320 265 C266 244 194 212 141 187"></path>
+
+                                <path id="route-angular-typescript" class="architecture-path architecture-path-secondary" data-connection="angular typescript" pathLength="1" d="M134 88 C186 58 254 44 320 52"></path>
+                                <path id="route-typescript-node" class="architecture-path architecture-path-secondary" data-connection="typescript node" pathLength="1" d="M320 52 C386 44 451 58 499 88"></path>
+                                <path id="route-node-express" class="architecture-path architecture-path-secondary" data-connection="node express" pathLength="1" d="M499 88 C540 132 548 198 531 250"></path>
+                                <path id="route-express-mongodb" class="architecture-path architecture-path-secondary" data-connection="express mongodb" pathLength="1" d="M531 250 C548 309 531 366 493 406"></path>
+                                <path id="route-mongodb-rest" class="architecture-path architecture-path-secondary" data-connection="mongodb rest-api" pathLength="1" d="M493 406 C444 438 382 452 320 447"></path>
+                                <path id="route-rest-jwt" class="architecture-path architecture-path-secondary" data-connection="rest-api jwt" pathLength="1" d="M320 447 C255 452 194 438 147 406"></path>
+                                <path id="route-jwt-git" class="architecture-path architecture-path-secondary" data-connection="jwt git" pathLength="1" d="M147 406 C106 362 92 309 109 255"></path>
+                                <path id="route-git-azure" class="architecture-path architecture-path-secondary" data-connection="git azure-devops" pathLength="1" d="M109 255 C96 224 108 199 141 187"></path>
+                                <path id="route-azure-angular" class="architecture-path architecture-path-secondary" data-connection="azure-devops angular" pathLength="1" d="M141 187 C118 154 118 119 134 88"></path>
+                            </g>
+
+                            <g class="architecture-packets">
+                                <circle class="architecture-packet" r="3.4">
+                                    <animateMotion dur="8s" begin="-1s" repeatCount="indefinite" rotate="auto">
+                                        <mpath href="#route-angular"></mpath>
+                                    </animateMotion>
+                                </circle>
+                                <circle class="architecture-packet" r="3.2">
+                                    <animateMotion dur="7.5s" begin="-4s" repeatCount="indefinite" rotate="auto">
+                                        <mpath href="#route-node"></mpath>
+                                    </animateMotion>
+                                </circle>
+                                <circle class="architecture-packet" r="3">
+                                    <animateMotion dur="8.8s" begin="-2s" repeatCount="indefinite" rotate="auto">
+                                        <mpath href="#route-mongodb"></mpath>
+                                    </animateMotion>
+                                </circle>
+                                <circle class="architecture-packet" r="3">
+                                    <animateMotion dur="7.2s" begin="-5s" repeatCount="indefinite" rotate="auto">
+                                        <mpath href="#route-rest-api"></mpath>
+                                    </animateMotion>
+                                </circle>
+                                <circle class="architecture-packet" r="3.1">
+                                    <animateMotion dur="8.4s" begin="-3s" repeatCount="indefinite" rotate="auto">
+                                        <mpath href="#route-jwt"></mpath>
+                                    </animateMotion>
+                                </circle>
+                                <circle class="architecture-packet" r="3.2">
+                                    <animateMotion dur="9s" begin="-6s" repeatCount="indefinite" rotate="auto">
+                                        <mpath href="#route-azure-devops"></mpath>
+                                    </animateMotion>
+                                </circle>
+                            </g>
+                        </svg>
+
+                        <div class="architecture-core">
+                            <p class="architecture-core-name" id="architecture-name">Matthew Petschauer</p>
+                            <p class="architecture-core-role" data-role-rotator aria-hidden="true">Full-Stack Software Developer</p>
+                            <p class="sr-only">Full-Stack Software Developer and Travlr Getaways Admin.</p>
+                        </div>
+
+                        <ul class="architecture-nodes" aria-label="Technology nodes and roles">
+                            <li class="architecture-node-item" data-tip="below" data-align="left" style="--x: 21%; --y: 17%; --float-delay: -2s;">
+                                <button class="architecture-node" type="button" data-tech="angular" aria-label="Angular, Frontend">
+                                    <span class="architecture-node-label">Angular</span>
+                                    <span class="architecture-node-tooltip" aria-hidden="true"><strong>Angular</strong><span>Frontend</span></span>
+                                </button>
+                            </li>
+                            <li class="architecture-node-item" data-tip="below" style="--x: 50%; --y: 10%; --float-delay: -7s;">
+                                <button class="architecture-node" type="button" data-tech="typescript" aria-label="TypeScript, Type Safety">
+                                    <span class="architecture-node-label">TypeScript</span>
+                                    <span class="architecture-node-tooltip" aria-hidden="true"><strong>TypeScript</strong><span>Type Safety</span></span>
+                                </button>
+                            </li>
+                            <li class="architecture-node-item" data-tip="below" data-align="right" style="--x: 78%; --y: 17%; --float-delay: -4s;">
+                                <button class="architecture-node" type="button" data-tech="node" aria-label="Node.js, Runtime">
+                                    <span class="architecture-node-label">Node.js</span>
+                                    <span class="architecture-node-tooltip" aria-hidden="true"><strong>Node.js</strong><span>Runtime</span></span>
+                                </button>
+                            </li>
+                            <li class="architecture-node-item" data-align="right" style="--x: 83%; --y: 48%; --float-delay: -9s;">
+                                <button class="architecture-node" type="button" data-tech="express" aria-label="Express.js, REST API">
+                                    <span class="architecture-node-label">Express.js</span>
+                                    <span class="architecture-node-tooltip" aria-hidden="true"><strong>Express.js</strong><span>REST API</span></span>
+                                </button>
+                            </li>
+                            <li class="architecture-node-item" data-align="right" style="--x: 77%; --y: 78%; --float-delay: -5s;">
+                                <button class="architecture-node" type="button" data-tech="mongodb" aria-label="MongoDB, NoSQL Database">
+                                    <span class="architecture-node-label">MongoDB</span>
+                                    <span class="architecture-node-tooltip" aria-hidden="true"><strong>MongoDB</strong><span>NoSQL Database</span></span>
+                                </button>
+                            </li>
+                            <li class="architecture-node-item" style="--x: 50%; --y: 86%; --float-delay: -11s;">
+                                <button class="architecture-node" type="button" data-tech="rest-api" aria-label="REST API, Backend Services">
+                                    <span class="architecture-node-label">REST API</span>
+                                    <span class="architecture-node-tooltip" aria-hidden="true"><strong>REST API</strong><span>Backend Services</span></span>
+                                </button>
+                            </li>
+                            <li class="architecture-node-item" data-align="left" style="--x: 23%; --y: 78%; --float-delay: -6s;">
+                                <button class="architecture-node" type="button" data-tech="jwt" aria-label="JWT, Authentication">
+                                    <span class="architecture-node-label">JWT</span>
+                                    <span class="architecture-node-tooltip" aria-hidden="true"><strong>JWT</strong><span>Authentication</span></span>
+                                </button>
+                            </li>
+                            <li class="architecture-node-item" data-align="left" style="--x: 17%; --y: 49%; --float-delay: -3s;">
+                                <button class="architecture-node" type="button" data-tech="git" aria-label="Git, Version Control">
+                                    <span class="architecture-node-label">Git</span>
+                                    <span class="architecture-node-tooltip" aria-hidden="true"><strong>Git</strong><span>Version Control</span></span>
+                                </button>
+                            </li>
+                            <li class="architecture-node-item" data-align="left" style="--x: 22%; --y: 36%; --float-delay: -8s;">
+                                <button class="architecture-node" type="button" data-tech="azure-devops" aria-label="Azure DevOps, CI/CD">
+                                    <span class="architecture-node-label">Azure DevOps</span>
+                                    <span class="architecture-node-tooltip" aria-hidden="true"><strong>Azure DevOps</strong><span>CI/CD</span></span>
+                                </button>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>

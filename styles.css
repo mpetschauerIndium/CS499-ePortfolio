@@ -361,35 +361,421 @@ ul {
     display: grid;
     min-height: 420px;
     align-items: center;
+    perspective: 1400px;
 }
 
-.headshot-placeholder {
+/* Premium hero visualization: all motion is transform/opacity-based and scoped to the architecture card. */
+.architecture-frame {
     position: relative;
-    display: grid;
-    min-height: 380px;
-    place-items: center;
-    border: 1px solid rgba(255, 255, 255, 0.72);
+    min-height: clamp(370px, 43vw, 490px);
+    overflow: hidden;
+    isolation: isolate;
+    border: 1px solid rgba(255, 255, 255, 0.76);
     border-radius: var(--radius);
     background:
-        linear-gradient(135deg, rgba(255, 255, 255, 0.86), rgba(248, 250, 252, 0.72)),
-        linear-gradient(135deg, rgba(15, 118, 110, 0.12), rgba(180, 83, 9, 0.1));
-    box-shadow: var(--shadow-lg);
-    color: var(--color-muted);
-    font-weight: 700;
-    padding: 1.5rem;
-    text-align: center;
+        linear-gradient(125deg, rgba(56, 189, 248, 0.22), transparent 34%),
+        linear-gradient(235deg, rgba(245, 158, 11, 0.16), transparent 38%),
+        conic-gradient(from 215deg at 50% 48%, rgba(20, 184, 166, 0.16), transparent 24%, rgba(56, 189, 248, 0.12), transparent 62%, rgba(245, 158, 11, 0.1), transparent 86%),
+        linear-gradient(145deg, rgba(255, 255, 255, 0.92), rgba(248, 250, 252, 0.7) 46%, rgba(236, 253, 245, 0.78));
+    box-shadow:
+        var(--shadow-lg),
+        inset 0 1px 0 rgba(255, 255, 255, 0.94),
+        inset 0 -1px 0 rgba(15, 23, 42, 0.06);
+    backdrop-filter: blur(24px) saturate(1.15);
+    transform: translateZ(0);
 }
 
-.headshot-placeholder::before {
+.architecture-frame::before {
     position: absolute;
-    inset: 1rem;
-    border: 1px dashed rgba(15, 118, 110, 0.28);
+    inset: 0;
+    z-index: 0;
+    background-image:
+        linear-gradient(rgba(15, 118, 110, 0.12) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(15, 118, 110, 0.1) 1px, transparent 1px);
+    background-position: 0 0;
+    background-size: 42px 42px;
+    content: "";
+    opacity: 0.5;
+    pointer-events: none;
+    -webkit-mask-image: radial-gradient(circle at 50% 52%, #000 0 62%, transparent 82%);
+    mask-image: radial-gradient(circle at 50% 52%, #000 0 62%, transparent 82%);
+    animation: architecture-grid-drift 24s linear infinite;
+}
+
+.architecture-frame::after {
+    position: absolute;
+    inset: 1px;
+    z-index: 1;
+    border-radius: calc(var(--radius) - 1px);
+    background:
+        linear-gradient(120deg, rgba(255, 255, 255, 0.55), transparent 28%, rgba(20, 184, 166, 0.08) 58%, transparent 100%);
+    box-shadow:
+        inset 0 0 48px rgba(56, 189, 248, 0.14),
+        inset 0 0 90px rgba(20, 184, 166, 0.12);
+    content: "";
+    pointer-events: none;
+}
+
+.architecture-lightband {
+    position: absolute;
+    z-index: 1;
+    width: 68%;
+    height: 26%;
+    border-radius: 999px;
+    background: linear-gradient(90deg, transparent 0%, rgba(56, 189, 248, 0.24) 42%, rgba(255, 255, 255, 0.34) 50%, rgba(20, 184, 166, 0.2) 58%, transparent 100%);
+    filter: blur(18px);
+    opacity: 0.58;
+    pointer-events: none;
+    transform: translate3d(0, 0, 0) rotate(-16deg);
+    will-change: transform, opacity;
+}
+
+.architecture-lightband-one {
+    left: -24%;
+    top: 18%;
+    animation: architecture-light-sweep 18s ease-in-out infinite;
+}
+
+.architecture-lightband-two {
+    right: -22%;
+    bottom: 12%;
+    background: linear-gradient(90deg, transparent 0%, rgba(245, 158, 11, 0.18) 44%, rgba(255, 255, 255, 0.28) 52%, rgba(20, 184, 166, 0.18) 60%, transparent 100%);
+    animation: architecture-light-sweep-alt 20s ease-in-out infinite;
+}
+
+.architecture-particles {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.architecture-particles span {
+    position: absolute;
+    left: var(--x);
+    top: var(--y);
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: rgba(8, 145, 178, 0.62);
+    box-shadow: 0 0 12px rgba(45, 212, 191, 0.62);
+    opacity: 0.54;
+    transform: translate3d(0, 0, 0);
+    animation: architecture-particle-drift 14s ease-in-out infinite;
+    animation-delay: var(--delay);
+    will-change: transform, opacity;
+}
+
+.architecture-lines {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    pointer-events: none;
+}
+
+.architecture-path {
+    fill: none;
+    stroke: url(#architecture-line-gradient);
+    stroke-dasharray: 0.035 0.12;
+    stroke-dashoffset: 1;
+    stroke-linecap: round;
+    stroke-width: 1.65;
+    opacity: 0.58;
+    vector-effect: non-scaling-stroke;
+    animation: architecture-path-flow 9s linear infinite;
+    transition: opacity 180ms ease, stroke-width 180ms ease, filter 180ms ease;
+}
+
+.architecture-path-secondary {
+    stroke-dasharray: 0.02 0.1;
+    stroke-width: 1.1;
+    opacity: 0.28;
+    animation-duration: 14s;
+}
+
+.architecture-path.is-active {
+    filter: drop-shadow(0 0 8px rgba(20, 184, 166, 0.54));
+    opacity: 0.96;
+    stroke-width: 2.35;
+}
+
+.architecture-packet {
+    fill: #ecfeff;
+    opacity: 0.9;
+    filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.72));
+}
+
+.architecture-core {
+    position: absolute;
+    left: 50%;
+    top: 51%;
+    z-index: 5;
+    display: grid;
+    width: clamp(145px, 42%, 220px);
+    min-height: 118px;
+    align-content: center;
+    justify-items: center;
+    gap: 0.45rem;
+    border: 1px solid rgba(255, 255, 255, 0.74);
     border-radius: var(--radius);
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.84), rgba(255, 255, 255, 0.58)),
+        linear-gradient(135deg, rgba(56, 189, 248, 0.18), rgba(20, 184, 166, 0.16));
+    box-shadow:
+        0 22px 48px rgba(15, 23, 42, 0.14),
+        inset 0 1px 0 rgba(255, 255, 255, 0.94);
+    padding: 1rem;
+    text-align: center;
+    transform: translate3d(-50%, -50%, 0);
+    backdrop-filter: blur(18px) saturate(1.18);
+}
+
+.architecture-core::before {
+    position: absolute;
+    inset: 0 auto auto 0;
+    width: 100%;
+    height: 3px;
+    border-radius: var(--radius) var(--radius) 0 0;
+    background: linear-gradient(90deg, #38bdf8, #14b8a6, #f59e0b);
     content: "";
 }
 
-.headshot-placeholder span {
+.architecture-core-name {
+    max-width: none;
+    color: var(--color-heading);
+    font-size: clamp(1rem, 2vw, 1.28rem);
+    font-weight: 800;
+    line-height: 1.16;
+}
+
+.architecture-core-role {
+    display: grid;
+    min-height: 2.6em;
+    place-items: center;
+    max-width: none;
+    color: var(--color-primary-dark);
+    font-size: clamp(0.72rem, 1.4vw, 0.9rem);
+    font-weight: 800;
+    line-height: 1.25;
+    transition: opacity 280ms ease, transform 280ms ease;
+}
+
+.architecture-core-role.is-transitioning {
+    opacity: 0;
+    transform: translateY(6px);
+}
+
+.architecture-nodes {
+    position: absolute;
+    inset: 0;
+    z-index: 6;
+    list-style: none;
+    pointer-events: none;
+}
+
+.architecture-node-item {
+    position: absolute;
+    left: var(--x);
+    top: var(--y);
+    transform: translate3d(-50%, -50%, 0);
+    pointer-events: auto;
+    animation: architecture-node-float 10s ease-in-out infinite;
+    animation-delay: var(--float-delay);
+    will-change: transform;
+}
+
+.architecture-node {
     position: relative;
+    display: inline-flex;
+    width: clamp(96px, 24vw, 126px);
+    min-height: 42px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.72);
+    border-radius: var(--radius);
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(248, 250, 252, 0.68)),
+        linear-gradient(135deg, rgba(14, 165, 233, 0.12), rgba(20, 184, 166, 0.12));
+    box-shadow:
+        0 14px 28px rgba(15, 23, 42, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.92);
+    color: #17212f;
+    cursor: default;
+    font: inherit;
+    font-size: clamp(0.66rem, 1.1vw, 0.84rem);
+    font-weight: 800;
+    line-height: 1.15;
+    padding: 0.52rem 0.58rem;
+    text-align: center;
+    transform: translateZ(0);
+    transition: background 180ms ease, border-color 180ms ease, box-shadow 180ms ease, color 180ms ease, transform 180ms ease;
+    backdrop-filter: blur(14px) saturate(1.12);
+}
+
+.architecture-node:hover,
+.architecture-node:focus-visible,
+.architecture-node.is-active {
+    border-color: rgba(20, 184, 166, 0.62);
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(240, 253, 250, 0.82)),
+        linear-gradient(135deg, rgba(56, 189, 248, 0.22), rgba(245, 158, 11, 0.14));
+    box-shadow:
+        0 18px 36px rgba(15, 23, 42, 0.16),
+        0 0 22px rgba(20, 184, 166, 0.18),
+        inset 0 1px 0 rgba(255, 255, 255, 0.96);
+    color: var(--color-primary-dark);
+    transform: scale(1.06);
+}
+
+.architecture-node-label {
+    max-width: 100%;
+    overflow-wrap: break-word;
+    white-space: normal;
+}
+
+.architecture-node-tooltip {
+    position: absolute;
+    left: 50%;
+    bottom: calc(100% + 0.58rem);
+    z-index: 10;
+    min-width: 132px;
+    max-width: 150px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: var(--radius);
+    background: rgba(15, 23, 42, 0.92);
+    box-shadow: 0 16px 34px rgba(15, 23, 42, 0.22);
+    opacity: 0;
+    padding: 0.52rem 0.62rem;
+    pointer-events: none;
+    text-align: left;
+    transform: translateX(-50%) translateY(4px);
+    transition: opacity 160ms ease, transform 160ms ease, visibility 160ms ease;
+    visibility: hidden;
+}
+
+.architecture-node-tooltip strong,
+.architecture-node-tooltip span {
+    display: block;
+    max-width: none;
+}
+
+.architecture-node-tooltip strong {
+    color: #ffffff;
+    font-size: 0.72rem;
+    line-height: 1.2;
+}
+
+.architecture-node-tooltip span {
+    color: rgba(226, 232, 240, 0.86);
+    font-size: 0.68rem;
+    font-weight: 650;
+    line-height: 1.25;
+    margin-top: 0.18rem;
+}
+
+.architecture-node-item[data-tip="below"] .architecture-node-tooltip {
+    top: calc(100% + 0.58rem);
+    bottom: auto;
+    transform: translateX(-50%) translateY(-4px);
+}
+
+.architecture-node-item[data-align="left"] .architecture-node-tooltip {
+    left: 0;
+    transform: translateY(4px);
+}
+
+.architecture-node-item[data-align="right"] .architecture-node-tooltip {
+    right: 0;
+    left: auto;
+    transform: translateY(4px);
+}
+
+.architecture-node-item[data-tip="below"][data-align="left"] .architecture-node-tooltip,
+.architecture-node-item[data-tip="below"][data-align="right"] .architecture-node-tooltip {
+    transform: translateY(-4px);
+}
+
+.architecture-node:hover .architecture-node-tooltip,
+.architecture-node:focus-visible .architecture-node-tooltip {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+    visibility: visible;
+}
+
+.architecture-node-item[data-align="left"] .architecture-node:hover .architecture-node-tooltip,
+.architecture-node-item[data-align="left"] .architecture-node:focus-visible .architecture-node-tooltip,
+.architecture-node-item[data-align="right"] .architecture-node:hover .architecture-node-tooltip,
+.architecture-node-item[data-align="right"] .architecture-node:focus-visible .architecture-node-tooltip {
+    transform: translateY(0);
+}
+
+@keyframes architecture-grid-drift {
+    from {
+        background-position: 0 0;
+    }
+
+    to {
+        background-position: 42px 42px;
+    }
+}
+
+@keyframes architecture-light-sweep {
+    0%,
+    100% {
+        opacity: 0.42;
+        transform: translate3d(0, 0, 0) rotate(-16deg);
+    }
+
+    50% {
+        opacity: 0.66;
+        transform: translate3d(44%, 18%, 0) rotate(-10deg);
+    }
+}
+
+@keyframes architecture-light-sweep-alt {
+    0%,
+    100% {
+        opacity: 0.34;
+        transform: translate3d(0, 0, 0) rotate(16deg);
+    }
+
+    50% {
+        opacity: 0.58;
+        transform: translate3d(-38%, -16%, 0) rotate(10deg);
+    }
+}
+
+@keyframes architecture-particle-drift {
+    0%,
+    100% {
+        opacity: 0.34;
+        transform: translate3d(0, 0, 0);
+    }
+
+    50% {
+        opacity: 0.72;
+        transform: translate3d(12px, -18px, 0);
+    }
+}
+
+@keyframes architecture-path-flow {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes architecture-node-float {
+    0%,
+    100% {
+        transform: translate3d(-50%, -50%, 0);
+    }
+
+    50% {
+        transform: translate3d(calc(-50% + 5px), calc(-50% - 8px), 0);
+    }
 }
 
 /* Buttons use clear visual hierarchy for primary and secondary actions. */
@@ -586,8 +972,8 @@ ul {
     padding: 0.4rem 0.65rem;
 }
 
-.screenshot-placeholder,
-.video-placeholder {
+.media-frame,
+.review-frame {
     position: relative;
     display: grid;
     place-items: center;
@@ -605,8 +991,8 @@ ul {
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
-.screenshot-placeholder::before,
-.video-placeholder::before {
+.media-frame::before,
+.review-frame::before {
     position: absolute;
     inset: 0.75rem;
     border: 1px solid rgba(220, 227, 236, 0.7);
@@ -615,12 +1001,12 @@ ul {
     pointer-events: none;
 }
 
-.screenshot-placeholder span,
-.video-placeholder span {
+.media-frame span,
+.review-frame span {
     position: relative;
 }
 
-.screenshot-placeholder img {
+.media-frame img {
     position: relative;
     width: 100%;
     height: 100%;
@@ -628,9 +1014,16 @@ ul {
     object-fit: cover;
 }
 
-.video-placeholder {
+.review-frame {
     aspect-ratio: 16 / 9;
     min-height: 280px;
+}
+
+.review-frame-content {
+    position: relative;
+    display: grid;
+    gap: 1rem;
+    max-width: 760px;
 }
 
 .section-cta {
@@ -742,7 +1135,7 @@ ul {
     background: var(--color-surface);
 }
 
-.artifact-card .screenshot-placeholder {
+.artifact-card .media-frame {
     min-height: 220px;
     border-width: 0 0 1px 0;
     border-radius: 0;
@@ -989,8 +1382,8 @@ ul {
         min-height: auto;
     }
 
-    .headshot-placeholder {
-        min-height: 300px;
+    .architecture-frame {
+        min-height: 390px;
     }
 }
 
@@ -1088,13 +1481,34 @@ ul {
         padding: 0.75rem;
     }
 
-    .artifact-card .screenshot-placeholder {
+    .artifact-card .media-frame {
         border-radius: var(--radius);
     }
 
-    .screenshot-placeholder,
-    .video-placeholder {
+    .media-frame,
+    .review-frame {
         min-height: 230px;
+    }
+
+    .architecture-frame {
+        min-height: 360px;
+    }
+
+    .architecture-core {
+        width: 138px;
+        min-height: 112px;
+        padding: 0.82rem;
+    }
+
+    .architecture-node {
+        width: 96px;
+        min-height: 38px;
+        font-size: 0.64rem;
+        padding: 0.42rem 0.48rem;
+    }
+
+    .architecture-node-tooltip {
+        min-width: 118px;
     }
 }
 
@@ -1106,5 +1520,17 @@ ul {
         transition-duration: 0.01ms !important;
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
+    }
+
+    .architecture-packet {
+        display: none;
+    }
+
+    .architecture-lightband,
+    .architecture-particles span,
+    .architecture-path,
+    .architecture-node-item,
+    .architecture-frame::before {
+        animation: none !important;
     }
 }
